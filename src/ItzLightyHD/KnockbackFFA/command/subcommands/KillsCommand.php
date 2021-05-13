@@ -17,7 +17,7 @@ class KillsCommand extends BaseSubCommand {
     public function __construct(Loader $plugin)
     {
         $this->plugin = $plugin;
-        parent::__construct("kills", "Get the kills of an online player");
+        parent::__construct("kills", "Sehe die anzahl der Kills von einem anderem Spieler");
     }
 
     protected function prepare(): void
@@ -33,12 +33,12 @@ class KillsCommand extends BaseSubCommand {
         $player = Server::getInstance()->getPlayer($args["player"]);
         if($player->isOnline()) {
             if(API::getKills($player) === "none") {
-                $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§e" . $player->getDisplayName() . " §r§6isn't playing KnockbackFFA right now");
+                $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§e" . $player->getDisplayName() . " §r§6ist momentan nicht Online :(");
             } else {
-                $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§e" . $player->getDisplayName() . " §r§6is at §e" . API::getKills(Server::getInstance()->getPlayer($args["player"])) . " §6kills");
+                $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§e" . $player->getDisplayName() . " §r§6hatt §e" . API::getKills(Server::getInstance()->getPlayer($args["player"])) . " §6kills");
             }
         } else {
-            $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§c" . $args["player"] . " isn't online!");
+            $sender->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§c" . $args["player"] . " ist nicht Online!");
         }
     }
 

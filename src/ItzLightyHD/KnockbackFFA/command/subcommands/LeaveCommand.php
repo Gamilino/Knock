@@ -17,7 +17,7 @@ class LeaveCommand extends BaseSubCommand {
     public function __construct(Loader $plugin)
     {
         $this->plugin = $plugin;
-        parent::__construct("leave", "Leave the minigame");
+        parent::__construct("leave", "Verlasse KnockbackFFA");
     }
 
     protected function prepare(): void
@@ -28,7 +28,7 @@ class LeaveCommand extends BaseSubCommand {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if(!$sender instanceof Player) {
-            $sender->sendMessage("§cOnly players are allowed to use this subcommand!");
+            $sender->sendMessage("§cDu kannst dies nicht tun!");
             return;
         }
         $lobbyWorld = GameSettings::getInstance()->lobby_world;
@@ -37,7 +37,7 @@ class LeaveCommand extends BaseSubCommand {
                 $sender->teleport(Server::getInstance()->getLevelByName($lobbyWorld)->getSpawnLocation());
             }
         } else {
-            $sender->sendMessage("§cThe lobby world doesn't exist. It was probably removed or unloaded. If you are the server administrator, load the level again and retry.");
+            $sender->sendMessage("§cEin Fehler ist aufgetreten.");
         }
     }
 

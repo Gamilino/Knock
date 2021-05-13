@@ -28,7 +28,7 @@ class JoinCommand extends BaseSubCommand {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if(!$sender instanceof Player) {
-            $sender->sendMessage("§cOnly players are allowed to use this subcommand!");
+            $sender->sendMessage("§cDu kannst dies nicht tun!");
             return;
         }
         $world = GameSettings::getInstance()->world;
@@ -37,7 +37,7 @@ class JoinCommand extends BaseSubCommand {
                 $sender->teleport(Server::getInstance()->getLevelByName($world)->getSpawnLocation());
             }
         } else {
-            $sender->sendMessage("§cCouldn't teleport you to the minigame. This is because the level is either not loaded or it doesn't even exist. If you are the server administrator, try to change the world in the configuration file to make it work.");
+            $sender->sendMessage("§cEin fehler ist aufgetreten");
         }
     }
 

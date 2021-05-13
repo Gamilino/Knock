@@ -63,7 +63,7 @@ class EssentialsListener implements Listener {
                     $dz = $directionvector->getZ();
                     $player->setMotion(new Vector3($dx, 1, $dz));
                     $this->cooldown[$player->getName()] = time() + 10;
-                } else $player->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cWait §e" . (10 - ((time() + 10) - $this->cooldown[$player->getName()])) . "§c seconds before using your leap again.");
+                } else $player->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cDu musst §e" . (10 - ((time() + 10) - $this->cooldown[$player->getName()])) . "§c Sekunden warten biss du das Leap wieder nutzen kannst.");
             }
         }
     }

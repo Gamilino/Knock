@@ -42,13 +42,13 @@ class Loader extends PluginBase {
         $this->getServer()->getCommandMap()->register($this->getName(), new KnockbackCommand($this));
         // Check for world existance (if the world doesn't exist, it will instantly disable the plugin)
         if(!($this->getServer()->getLevelByName(GameSettings::getInstance()->world) instanceof Level)) {
-            $this->getLogger()->alert("The world specified for the arena in the configuration file doesn't exist. Change it or make sure it has the correct name!");
+            $this->getLogger()->alert("Ein fehler ist aufgetreten!");
             $plugin = $this->getServer()->getPluginManager()->getPlugin($this->getName());
             $this->getServer()->getPluginManager()->disablePlugin($plugin);
         }
         if(!($this->getServer()->getLevelByName(GameSettings::getInstance()->lobby_world) instanceof Level)) {
             if(!($this->getServer()->getLevelByName(GameSettings::getInstance()->world) instanceof Level)) {
-                $this->getLogger()->alert("The world specified for the lobby in the configuration file doesn't exist. Change it or make sure it has the correct name!");
+                $this->getLogger()->alert("Ein fehler ist aufgetreten!");
                 $plugin = $this->getServer()->getPluginManager()->getPlugin($this->getName());
                 $this->getServer()->getPluginManager()->disablePlugin($plugin);
             }

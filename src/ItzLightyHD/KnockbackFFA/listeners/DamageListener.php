@@ -71,7 +71,7 @@ class DamageListener implements Listener {
                                 $killstreakevent->call();
                                 foreach ($players as $p) {
                                     KnockbackPlayer::getInstance()->playSound("random.levelup", $p);
-                                    $p->sendPopup(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§f" . Server::getInstance()->getPlayer(KnockbackPlayer::getInstance()->lastDmg[strtolower($player->getName())])->getDisplayName() . "§r§6 is at §e" . KnockbackPlayer::getInstance()->killstreak[KnockbackPlayer::getInstance()->lastDmg[strtolower($player->getName())]] . "§6 kills");
+                                    $p->sendPopup(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§f" . Server::getInstance()->getPlayer(KnockbackPlayer::getInstance()->lastDmg[strtolower($player->getName())])->getDisplayName() . "§r§6 hat §e" . KnockbackPlayer::getInstance()->killstreak[KnockbackPlayer::getInstance()->lastDmg[strtolower($player->getName())]] . "§6 kills");
                                 }
                                 if(GameSettings::getInstance()->scoretag == true) {
                                     $killedBy->setScoreTag(str_replace(["{kills}"], [KnockbackPlayer::getInstance()->killstreak[strtolower($killedBy->getName())]], GameSettings::getInstance()->getConfig()->get("scoretag-format")));
@@ -93,7 +93,7 @@ class DamageListener implements Listener {
                         if(GameSettings::getInstance()->scoretag == true) {
                             $event->getEntity()->setScoreTag(str_replace(["{kills}"], [KnockbackPlayer::getInstance()->killstreak[strtolower($player->getName())]], GameSettings::getInstance()->getConfig()->get("scoretag-format")));
                         }
-                        $player->sendPopup(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cYou were killed by §f" . $killedBy->getDisplayName());
+                        $player->sendPopup(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cDu wurdest gekillt von §f" . $killedBy->getDisplayName());
                     }
                     KnockbackPlayer::getInstance()->lastDmg[strtolower($player->getName())] = "none";                    
                 }
@@ -138,7 +138,7 @@ class DamageListener implements Listener {
 
                     if (abs($xx - $x) < $sr && abs($yy - $y) < $sr && abs($zz - $z) < $sr) {
                         $event->setCancelled();
-                        $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cYou can't hit the players here!");
+                        $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cDu kannst dies hier nicht tun!");
                         return;
                     }
 
@@ -167,7 +167,7 @@ class DamageListener implements Listener {
                 if($damager instanceof Player) {
                     if($damager->getName() == $player->getName()) {
                         $event->setCancelled();
-                        $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cYou can't hit yourself.");
+                        $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cDu kannst dich nicht hitten.");
                         return;
                     } else {
                         $event->setBaseDamage(0);
@@ -184,7 +184,7 @@ class DamageListener implements Listener {
 
                         if (abs($xx - $x) < $sr && abs($yy - $y) < $sr && abs($zz - $z) < $sr) {
                             $event->setCancelled();
-                            $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cYou can't hit the players here!");
+                            $damager->sendMessage(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§cDu kannst dies hier nicht tun!");
                             return;
                         }
 

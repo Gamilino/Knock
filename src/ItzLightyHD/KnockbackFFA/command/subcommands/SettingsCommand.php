@@ -21,7 +21,7 @@ class SettingsCommand extends BaseSubCommand {
     public function __construct(Loader $plugin)
     {
         $this->plugin = $plugin;
-        parent::__construct("settings", "Customize the minigame directly from the game");
+        parent::__construct("settings", "NUR ADMINS");
     }
 
     protected function prepare(): void
@@ -32,7 +32,7 @@ class SettingsCommand extends BaseSubCommand {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if(!$sender instanceof Player) {
-            $sender->sendMessage("§cOnly players are allowed to use this subcommand!");
+            $sender->sendMessage("§cDu kannst dies nicht tun!");
             return;
         }
         $this->customizeGame($sender);
@@ -75,8 +75,8 @@ class SettingsCommand extends BaseSubCommand {
             GameSettings::getInstance()->jump_boost_level = intval($data[7]);
             $this->reloadGame(GameSettings::getInstance()->world);
         });
-        $form->setTitle(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§8Settings");
-        $form->addLabel("Customize the game options here. If a value is blank, the effect will be disabled. After the server restart, the values will be the same as those from the configuration file.");
+        $form->setTitle(GameSettings::getInstance()->getConfig()->get("prefix") . "§r§8Einstellungen");
+        $form->addLabel("Du kannst hier KnockbackFFA anpassen.");
         $form->addToggle("Massive knockback", API::isMassiveKnockbackEnabled());
         $form->addToggle("Bow", API::isBowEnabled());
         $form->addToggle("Snowballs", API::isSnowballsEnabled());
